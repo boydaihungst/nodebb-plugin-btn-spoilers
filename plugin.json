@@ -1,0 +1,16 @@
+{
+    "url": "git@github.com:dan-cunha/nodebb-plugin-btp-spoilers.git",
+    "library": "./spoilers.js",
+    "staticDirs": {
+        "static": "./static"
+    },
+    "less": [
+        "./static/spoilers.less"
+    ],
+    "hooks": [
+        { "hook": "filter:post.parse", "method": "parse" }
+    ],
+    "scripts": [
+        "./static/spoilers.js"
+    ]
+}
