@@ -1,0 +1,24 @@
+{
+  "name": "nodebb-plugin-btn-spoilers",
+  "version": "0.0.1",
+  "description": "spoilers plugin for nodeBB",
+  "main": "spoilers.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darktrge/nodebb-plugin-btn-spoilers.git"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "spoilers"
+  ],
+  "author": "Danijel Marjanović <danijel84@gmail.com> (https://www.linkedin.com/in/danijel-marjanovic-0b17a536)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darktrge/nodebb-plugin-btn-spoilers/issues"
+  },
+  "homepage": "https://github.com/darktrge/nodebb-plugin-btn-spoilers#readme"
+}
