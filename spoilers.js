@@ -1,15 +1,13 @@
 "use strict";
 
-var plugin = {};
+var BTPSpoilers = {
+    parse: function(postData, callback) {
+        postData.postData.content = postData.postData.content
+            .replace(/\#\#spoiler/g, '<a href="#" class="show-spoiler btn btn-md btn-default waves-effect"><i class="fa fa-eye-slash fa-fw"></i> Spoiler!</a><div class="spoiler hidden">')
+            .replace(/\#\#endspoiler/g, '</div>')
 
-
-plugin.parse = function(postContent, callback) {
-	// this regex could be better
-	postContent = postContent
-		.replace(/<p>! *([\S\s]*?)<\/p>/gm, '</blockquote><blockquote()><div onclick="if(document.getElementById(\'spoiler\') .style.display==\'none\') {document.getElementById(\'spoiler\') .style.display=\'\'}else{document.getElementById(\'spoiler\') .style.display=\'none\'}"></div><div><p>$1</p></span></blockquote><blockquote()>')
-		.replace(/<blockquote><div>\s*<\/blockquote>/g, '');
-
-	callback(null, postContent);
+        callback(null, postData);
+    }
 };
 
-module.exports = plugin;
+module.exports = BTPSpoilers;
