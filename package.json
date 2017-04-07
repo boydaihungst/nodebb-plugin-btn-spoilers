@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-btn-spoilers",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "spoilers plugin for nodeBB",
   "main": "spoilers.js",
   "scripts": {
