@@ -1,5 +1,5 @@
 {
-    "url": "git@github.com:dan-cunha/nodebb-plugin-btp-spoilers.git",
+    "url": "https://github.com/darktrge/nodebb-plugin-btn-spoilers/",
     "library": "./spoilers.js",
     "staticDirs": {
         "static": "./static"
