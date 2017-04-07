@@ -10,4 +10,8 @@ $('document').ready(function() {
 			}
 		});
 	});
+
+    $('body').on('click', 'a.show-spoiler', function(){
+        $(this).parent().siblings('.spoiler').toggleClass('hidden');
+    });
 });
