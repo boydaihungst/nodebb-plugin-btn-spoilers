@@ -8,7 +8,7 @@
         "./static/spoilers.less"
     ],
     "hooks": [
-        { "hook": "filter:post.parse", "method": "parse" }
+        { "hook": "filter:parse.post", "method": "parse" }
     ],
     "scripts": [
         "./static/spoilers.js"
