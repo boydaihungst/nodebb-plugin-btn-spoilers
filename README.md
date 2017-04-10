@@ -1,5 +1,5 @@
 # nodebb-plugin-btn-spoilers
-Spoiler Plugin for NodeBB
+Allows you to embed spoilers in NodeBB post content. Just use the following syntax:
 
 ##spoilers
 spoiler text here
