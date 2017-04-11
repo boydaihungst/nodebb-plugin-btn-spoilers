@@ -11,10 +11,10 @@ $('document').ready(function() {
         });
     });
 
-    $('body').on('click', 'a.show-spoiler', function(){
-        $(this).parent().siblings('.spoiler').toggleClass('hidden');
+    $('body').on('click', 'div.show-spoiler', function(){
         $(this).find('.fa').toggleClass('fa-eye');
         $(this).find('.fa').toggleClass('fa-eye-slash');
+        $(this).parent().find('> .spoiler').toggleClass('hidden');
     });
 
 });
