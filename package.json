@@ -1,6 +1,9 @@
 {
   "name": "nodebb-plugin-btn-spoilers",
   "version": "0.3.0",
+  "nbbpm": {
+    "compatibility": "^1.4.5"
+  },
   "description": "spoilers plugin for nodeBB",
   "main": "spoilers.js",
   "scripts": {

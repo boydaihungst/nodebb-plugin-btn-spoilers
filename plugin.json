@@ -12,8 +12,6 @@
     ],
     "scripts": [
         "./static/spoilers.js"
-    ],
-    "nbbpm": {
-        "compatibility": "^1.4.5"
-    }
+    ]
+
 }
