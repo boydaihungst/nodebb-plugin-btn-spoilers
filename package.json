@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darktrge/nodebb-plugin-btn-spoilers.git"
+    "url": "git+https://github.com/boydaihungst/nodebb-plugin-btn-spoilers.git"
   },
   "keywords": [
     "nodebb",
@@ -21,7 +21,7 @@
   "author": "Danijel Marjanović <danijel84@gmail.com> (https://www.linkedin.com/in/danijel-marjanovic-0b17a536)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/darktrge/nodebb-plugin-btn-spoilers/issues"
+    "url": "https://github.com/boydaihungst/nodebb-plugin-btn-spoilers/issues"
   },
-  "homepage": "https://github.com/darktrge/nodebb-plugin-btn-spoilers#readme"
+  "homepage": "https://github.com/boydaihungst/nodebb-plugin-btn-spoilers#readme"
 }

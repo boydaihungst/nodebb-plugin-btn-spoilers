@@ -1,19 +1,21 @@
 $('document').ready(function() {
-    require(['composer', 'composer/controls'], function(composer, controls) {
+    require(['composer', 'composer/controls', 'translator'], function(composer, controls, translator) {
         composer.addButton('fa fa-eye-slash', function(textarea, selectionStart, selectionEnd) {
-
-            var spoilersTitle = "=NSFW content";
-            if(selectionStart === selectionEnd){
-                controls.insertIntoTextarea(textarea, "##spoiler=" + spoilersTitle + "\n\n##endspoiler");
-                controls.updateTextareaSelection(textarea, selectionStart + 11 + spoilersTitle.length, selectionStart + 11 + spoilersTitle.length);
-            } else {
-                controls.wrapSelectionInTextareaWith(textarea, '##spoiler' + spoilersTitle + '\n\n','\n##endspoiler');
-                controls.updateTextareaSelection(textarea, selectionStart + 11 + spoilersTitle.length, selectionEnd + 11 + spoilersTitle.length);
-            }
+            translator.translate('[[nsfw:default-title]]', function(defaultTitle) {
+                var spoilersTitle = defaultTitle;
+                if(selectionStart === selectionEnd){
+                    controls.insertIntoTextarea(textarea, "##spoiler=" + spoilersTitle + "\n\n##endspoiler");
+                    controls.updateTextareaSelection(textarea, selectionStart + 11 + spoilersTitle.length, selectionStart + 11 + spoilersTitle.length);
+                } else {
+                    controls.wrapSelectionInTextareaWith(textarea, '##spoiler=' + spoilersTitle + '\n\n##endspoiler');
+                    controls.updateTextareaSelection(textarea, selectionStart + 11 + spoilersTitle.length, selectionEnd + 11 + spoilersTitle.length);
+                }
+            });
         });
     });
-
-    $('body').on('click', 'div.show-spoiler', function(){
+    $('body').on('click', 'div.spoiler-switcher', function(){
+        $(this).toggleClass('showing');
+        $(this).toggleClass('hiding');
         $(this).find('.fa').toggleClass('fa-eye');
         $(this).find('.fa').toggleClass('fa-eye-slash');
         if($(this).find('.fa').hasClass('fa-eye')){
@@ -23,5 +25,4 @@ $('document').ready(function() {
         }
         $(this).parent().find('> .spoiler').toggleClass('hidden');
     });
-
 });

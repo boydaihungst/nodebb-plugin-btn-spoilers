@@ -1,5 +1,5 @@
 {
-    "url": "https://github.com/darktrge/nodebb-plugin-btn-spoilers/",
+    "url": "https://github.com/boydaihungst/nodebb-plugin-btn-spoilers/",
     "library": "./spoilers.js",
     "staticDirs": {
         "static": "./static"
@@ -8,10 +8,13 @@
         "./static/spoilers.less"
     ],
     "hooks": [
-        { "hook": "filter:parse.post", "method": "parse" }
+		{ "hook": "filter:parse.post", "method": "parse" },
+		{ "hook": "filter:parse.signature", "method": "parse" },
+		{ "hook": "filter:parse.raw", "method": "parse" }
     ],
     "scripts": [
         "./static/spoilers.js"
-    ]
-
+    ],
+    "languages": "languages",
+    "defaultLang": "en"
 }
