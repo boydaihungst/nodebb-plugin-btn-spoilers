@@ -1,6 +1,6 @@
 {
-  "name": "nodebb-plugin-btn-spoilers",
-  "version": "0.4.1",
+  "name": "nodebb-plugin-btn-spoilers-fixed",
+  "version": "0.4.2",
   "nbbpm": {
     "compatibility": "^1.18.6"
   },
