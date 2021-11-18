@@ -1,22 +1,37 @@
-"use strict";
-var NSFWSpoilers = {
-    transform: function(postData) {
-        postData.content = postData.content
-            .replace(/\#\#spoiler=([^<]*)/g, '***' + '$1' + '***' + '##spoiler')
-            .replace(/\#\#spoiler/g, `<div><div href="#" class="spoiler-switcher hiding btn btn-md btn-default waves-effect" title="[[nsfw:show-btn-warning]]"><i class="fa fa-eye-slash fa-fw"></i><span class="btn-text" data-show_text="[[nsfw:show-btn-label]]" data-hide_text="[[nsfw:hide-btn-label]]">[[nsfw:show-btn-label]]</span></div><div class="spoiler hidden">`)
-            .replace(/\#\#endspoiler/g, '</div></div>')
+'use strict';
 
-    },
-    parse: function(data, callback) {
-        if (data && 'string' === typeof data) {
-            data = this.transform(data);
-        } else if (data.postData && data.postData.content) {
-            data.postData.content = this.transform(data.postData.content);
-        } else if (data.userData && data.userData.signature) {
-            data.userData.signature = this.transform(data.userData.signature);
-        }
+var NSFWSpoilers = {
+  parse: function (data, callback) {
+    if (!data) callback(null, data);
+    var nfswTransform = async function (content) {
+      var translator = require.main.require('./public/src/modules/translator');
+      const showBtnWarning = await translator.translate('[[nsfw:show-btn-warning]]');
+      const showBtnLabel = await translator.translate('[[nsfw:show-btn-label]]');
+      const hideBtnLabel = await translator.translate('[[nsfw:hide-btn-label]]');
+      return content
+        .replace(
+          /\#\#spoiler/g,
+          `<div><div href="#" class="spoiler-switcher hiding btn btn-md btn-default waves-effect" title="${showBtnWarning}"><i class="fa fa-eye-slash fa-fw"></i><span class="btn-text" data-show_text="${showBtnLabel}" data-hide_text="${hideBtnLabel}">${showBtnLabel}</span></div><div class="panel panel-default hidden spoiler">`,
+        )
+        .replace(/\#\#endspoiler/g, '</div></div>');
+    };
+    if ('string' === typeof data) {
+      nfswTransform(data).then((parsedContent) => {
+        data = parsedContent;
         callback(null, data);
+      });
+    } else if (data.postData && data.postData.content) {
+      nfswTransform(data.postData.content).then((parsedContent) => {
+        data.postData.content = parsedContent;
+        callback(null, data);
+      });
+    } else if (data.userData && data.userData.signature) {
+      nfswTransform(data.userData.signature).then((parsedContent) => {
+        data.userData.signature = parsedContent;
+        callback(null, data);
+      });
     }
+  },
 };
 
 module.exports = NSFWSpoilers;

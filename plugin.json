@@ -16,5 +16,5 @@
         "./static/spoilers.js"
     ],
     "languages": "languages",
-    "defaultLang": "en"
+    "defaultLang": "en-US"
 }
