@@ -17,7 +17,7 @@ $('document').ready(function () {
         controls.updateTextareaSelection(
           textarea,
           selectionStart + spoilerStartTag.length + 1 + spoilersTitle.length,
-          selectionEnd + spoilerStartTag.length + 2 + spoilersTitle.length,
+          selectionEnd + spoilerStartTag.length + 1 + spoilersTitle.length,
         );
       }
     });
