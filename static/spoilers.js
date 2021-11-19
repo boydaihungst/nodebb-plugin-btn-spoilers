@@ -1,25 +1,35 @@
 $('document').ready(function () {
   require(['composer', 'composer/controls', 'translator'], function (composer, controls, translator) {
-    composer.addButton('fa fa-eye-slash', async function (textarea, selectionStart, selectionEnd) {
-      //   var spoilersTitle = await translator.translate('[[nsfw:default-title]]');
-      var spoilersTitle = '';
-      const spoilerStartTag = '##spoiler';
-      const spoilerEndTag = '##endspoiler';
-      if (selectionStart === selectionEnd) {
-        controls.insertIntoTextarea(textarea, spoilerStartTag + spoilersTitle + '\n\n' + spoilerEndTag);
-        controls.updateTextareaSelection(
-          textarea,
-          selectionStart + spoilerStartTag.length + 1 + spoilersTitle.length,
-          selectionEnd + spoilerStartTag.length + 1 + spoilersTitle.length,
-        );
-      } else {
-        controls.wrapSelectionInTextareaWith(textarea, spoilerStartTag + spoilersTitle + '\n', '\n' + spoilerEndTag);
-        controls.updateTextareaSelection(
-          textarea,
-          selectionStart + spoilerStartTag.length + 1 + spoilersTitle.length,
-          selectionEnd + spoilerStartTag.length + 1 + spoilersTitle.length,
-        );
-      }
+    translator.translate('[[nsfw:icon-title-composer]]', function (iconTitleOnComposerToolbar) {
+      composer.addButton(
+        'fa fa-eye-slash',
+        function (textarea, selectionStart, selectionEnd) {
+          //   var spoilersTitle = await translator.translate('[[nsfw:default-title]]');
+          var spoilersTitle = '';
+          const spoilerStartTag = '##spoiler';
+          const spoilerEndTag = '##endspoiler';
+          if (selectionStart === selectionEnd) {
+            controls.insertIntoTextarea(textarea, spoilerStartTag + spoilersTitle + '\n\n' + spoilerEndTag);
+            controls.updateTextareaSelection(
+              textarea,
+              selectionStart + spoilerStartTag.length + 1 + spoilersTitle.length,
+              selectionEnd + spoilerStartTag.length + 1 + spoilersTitle.length,
+            );
+          } else {
+            controls.wrapSelectionInTextareaWith(
+              textarea,
+              spoilerStartTag + spoilersTitle + '\n',
+              '\n' + spoilerEndTag,
+            );
+            controls.updateTextareaSelection(
+              textarea,
+              selectionStart + spoilerStartTag.length + 1 + spoilersTitle.length,
+              selectionEnd + spoilerStartTag.length + 1 + spoilersTitle.length,
+            );
+          }
+        },
+        iconTitleOnComposerToolbar,
+      );
     });
   });
   $('body').on('click', 'div.spoiler-switcher', function () {
