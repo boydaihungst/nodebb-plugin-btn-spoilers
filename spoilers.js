@@ -2,7 +2,7 @@
 
 var NSFWSpoilers = {
   parse: function (data, callback) {
-    if (!data) callback(null, data);
+    if (!data) return callback(null, data);
     var nfswTransform = async function (content) {
       var translator = require.main.require('./public/src/modules/translator');
       const showBtnWarning = await translator.translate('[[nsfw:show-btn-warning]]');
