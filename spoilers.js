@@ -20,12 +20,12 @@ var NSFWSpoilers = {
         data = parsedContent;
         callback(null, data);
       });
-    } else if (data.postData && data.postData.content) {
+    } else if (data.postData && data.postData.content != null && data.postData.content != undefined) {
       nfswTransform(data.postData.content).then((parsedContent) => {
         data.postData.content = parsedContent;
         callback(null, data);
       });
-    } else if (data.userData && data.userData.signature) {
+    } else if (data.userData && data.userData.signature != null && data.userData.signature != undefined) {
       nfswTransform(data.userData.signature).then((parsedContent) => {
         data.userData.signature = parsedContent;
         callback(null, data);
